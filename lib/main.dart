@@ -21,6 +21,25 @@ class SimpleCalculator extends StatefulWidget {
 }
 
 class _SimpleCalculatorState extends State<SimpleCalculator> {
+  String equation = "0";
+  String result = "0";
+  String expression = "";
+  double equationFontSize = 38.0;
+  double resultFontSize = 48.0;
+
+  buttonPressed(String buttonText) {
+    setState(() {
+      if (buttonText == "C") {
+        
+      } else if(buttonText == "⌫"){
+      } else if(buttonText == "="){
+
+      }else{
+        equation = equation + button
+      }
+    });
+  }
+
   Widget buildButton(
       String buttonText, double buttonHeight, Color buttonColor) {
     return Container(
@@ -32,7 +51,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
             side: BorderSide(
                 color: Colors.white, width: 1, style: BorderStyle.solid)),
         padding: EdgeInsets.all(16.0),
-        onPressed: null,
+        onPressed: () => buttonPressed(buttonText),
         child: Text(
           buttonText,
           style: TextStyle(
@@ -54,16 +73,16 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
             alignment: Alignment.centerRight,
             padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
             child: Text(
-              "0",
-              style: TextStyle(fontSize: 38.0),
+              equation,
+              style: TextStyle(fontSize: equationFontSize),
             ),
           ),
           Container(
             alignment: Alignment.centerRight,
             padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
             child: Text(
-              "0",
-              style: TextStyle(fontSize: 38.0),
+              result,
+              style: TextStyle(fontSize: resultFontSize),
             ),
           ),
           Expanded(
